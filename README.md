@@ -1,5 +1,8 @@
 # GuidedDash
-<img src="https://github.com/ZeroZAlex27/GuidedDash/ReadmeFiles/GD_GameplayShowcase_GIF.gif">
+![](https://github.com/ZeroZAlex27/GuidedDash/blob/master/ReadmeFiles/GD_GameplayShowcase_GIF.gif)
+
+## Gameplay Showcase
+https://youtu.be/f93WmyhWWA0
 
 ## About 
 This is my first portfolio project made after thorough study of Gameplay Ability System and LyraStarterGame. Project presented as multiplayer slasher and based on my understanding of Lyra's code and Tranek's documentaion on GAS. There will always be a place for optimization and improvement, but I think this is enough to show my skills in studying someone else's project and using it for further work.
