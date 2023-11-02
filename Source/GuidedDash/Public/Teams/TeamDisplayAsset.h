@@ -1,0 +1,58 @@
+// Copyright notice
+
+#pragma once
+
+#include "Engine/DataAsset.h"
+
+#include "TeamDisplayAsset.generated.h"
+
+class UMaterialInstanceDynamic;
+class UMeshComponent;
+class UNiagaraComponent;
+class AActor;
+class UTexture;
+struct FPropertyChangedEvent;
+
+/*
+*	UTeamDisplayAsset
+* 
+*	Represents the display information for team definitions (e.g., colors, display names, textures, etc...)
+*/
+UCLASS(BlueprintType)
+class GUIDEDDASH_API UTeamDisplayAsset : public UDataAsset
+{
+	GENERATED_BODY()
+	
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TMap<FName, float> ScalarParameters;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TMap<FName, FLinearColor> ColorParameters;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TMap<FName, TObjectPtr<UTexture>> TextureParameters;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FText TeamShortName;
+
+public:
+	UFUNCTION(BlueprintCallable, Category = Teams)
+	void ApplyToMaterial(UMaterialInstanceDynamic* Material);
+
+	UFUNCTION(BlueprintCallable, Category = Teams)
+	void ApplyToMeshComponent(UMeshComponent* MeshComponent);
+
+	UFUNCTION(BlueprintCallable, Category = Teams)
+	void ApplyToNiagaraComponent(UNiagaraComponent* NiagaraComponent);
+
+	UFUNCTION(BlueprintCallable, Category = Teams, meta = (DefaultToSelf = "TargetActor"))
+	void ApplyToActor(AActor* TargetActor, bool bIncludeChildActors = true);
+
+public:
+	//~UObject interface
+#if WITH_EDITOR
+	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
+#endif
+	//~End of UObject interface
+};
